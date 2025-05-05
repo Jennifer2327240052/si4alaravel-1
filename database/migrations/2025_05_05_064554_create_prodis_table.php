@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fakultas', function (Blueprint $table) {
-            $table->id(); // primary key, auto-incrementing, bigint
-            $table->string('nama', 50);
-            $table->string('singkatan', 5);
-            $table->string('dekan', 30);
-            $table->string('wakil_dekan', 30);
+        Schema::create('prodis', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -26,10 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fakultas');
+        Schema::dropIfExists('prodis');
     }
-
-
 };
-
-
