@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('prodis', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('singkatan')->unique();
+            $table->string('kaprodi');
+            $table->string('sekretaris');
+            $table->foreignId('fakultas_id')->constrained('fakultas')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }
