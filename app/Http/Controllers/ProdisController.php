@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\prodis;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
-class ProdisController extends Controller
+class ProdiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $prodi = Prodi::all();
+        return view('prodi.index', compact('prodi'));
     }
 
     /**
@@ -20,7 +21,8 @@ class ProdisController extends Controller
      */
     public function create()
     {
-        //
+        $fakultas = Fakultas::all();
+        return view('prodi.create', compact('fakultas'));
     }
 
     /**
@@ -28,13 +30,14 @@ class ProdisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validasi input
+        $input
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(prodis $prodis)
+    public function show(Prodi $prodi)
     {
         //
     }
@@ -42,7 +45,7 @@ class ProdisController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(prodis $prodis)
+    public function edit(Prodi $prodi)
     {
         //
     }
@@ -50,7 +53,7 @@ class ProdisController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, prodis $prodis)
+    public function update(Request $request, Prodi $prodi)
     {
         //
     }
@@ -58,7 +61,7 @@ class ProdisController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(prodis $prodis)
+    public function destroy(Prodi $prodi)
     {
         //
     }
