@@ -22,7 +22,7 @@ class ProdiController extends Controller
     public function create()
     {
         $prodi = Prodi::all();
-        return view('prodi.create', compact('fakultas'));
+        return view('prodi.create', compact('prodi'));
     }
 
     /**

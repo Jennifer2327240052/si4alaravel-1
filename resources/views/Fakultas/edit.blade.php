@@ -12,32 +12,33 @@
                   <!--begin::Form-->
                   <form action="{{ route('fakultas.store') }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <!--begin::Body-->
                     <div class="card-body">
                       <div class="mb-3">
                         <label for="nama" class="form-label">Nama Fakultas</label>
-                        <input type="text" class="form-control" name="nama" value="{{ old('nama') }}">
+                        <input type="text" class="form-control" name="nama" value="{{ old('nama') ? old ('nama') : $fakults->nama }}">
                         @error('nama')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
                       <div class="mb-3">
                         <label for="singkatan" class="form-label">Singkatan</label>
-                        <input type="text" class="form-control" name="singkatan" value="{{ old('singkatan') }}">
+                        <input type="text" class="form-control" name="singkatan" value="{{ old('singkatan') ? old ('singkatan') : $fakults->singkatan }}">
                         @error('singkatan')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
                       <div class="mb-3">
                         <label for="dekan" class="form-label">Nama Dekan</label>
-                        <input type="text" class="form-control" name="dekan" value="{{ old('dekan') }}">
+                        <input type="text" class="form-control" name="dekan" value="{{ old('dekan') ? old ('dekan') : $fakults->dekan}}">
                         @error('dekan')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
                       <div class="mb-3">
                         <label for="wakil_dekan" class="form-label">Nama Wakil Dekan</label>
-                        <input type="text" class="form-control" name="wakil_dekan" value="{{ old('wakil_dekan') }}">
+                        <input type="text" class="form-control" name="wakil_dekan" value="{{ old('wakil_dekan') ? old ('wakil_dekan') : $fakults->wakil_dekan}}">
                         @error('wakil_dekan')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror

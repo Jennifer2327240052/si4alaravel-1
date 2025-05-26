@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
-use App\Models\Prodi;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -22,8 +21,8 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        $prodi = Prodi::all();
-        return view('mahasiswa.create', compact('prodi'));
+        $mahasiswa = Mahasiswa::all();
+        return view('mahasiswa.create', compact('mahasiswa'));
     }
 
     /**
@@ -83,8 +82,23 @@ class MahasiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Mahasiswa $mahasiswa)
+    public function destroy($mahasiswa)
     {
-        //
+        $mahasiswa = Mahasiswa::findOrFail($mahasiswa);
+        //dd($mahasiswa);
+
+        //hapus data mahasiswa$mahasiswa
+        if ($mahasiswa->foto){
+            $fotoPath = public_path('images/'.$mahasiswa->foto);
+            if(file_exists($fotoPath)){
+                unlink($fotoPath); //hapus file foto }
+            }
+        // hapus data mahasiswa
+        $mahasiswa->delete();
+        
+
+        //redirectke route mahasiswa index
+        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil dihapus.');
     }
+}
 }
