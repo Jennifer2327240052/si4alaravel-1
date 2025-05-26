@@ -1,4 +1,5 @@
 @extends('layout.main')
+@section('title', 'Program Studi')
 
 @section('content')
     <!--begin::Row-->

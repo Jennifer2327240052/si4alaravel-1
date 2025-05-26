@@ -38,6 +38,7 @@
                             <th>Singkatan</th>
                             <th>Dekan</th>
                             <th>Wakil Dekan</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,12 +53,12 @@
                                 <a href="{{ route('fakultas.edit', $item->id }}" class="btn btn-warning">Edit</a>
                                 <form action="{{ route('fakultas.destroy', $item->id })" method="POST" class="d-inline>
                                     @csrf
-                                    @metgod('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger show_confirm" data-toggle="tooltip" title='Delete'
+                                    data-nama='{{ $item->nama }}'>Delete</button>
                                 </form>
                             </td>
                         </tr>
-                    @endforeach
                         @endforeach
                     </tbody>
                 </table>

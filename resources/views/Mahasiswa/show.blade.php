@@ -34,38 +34,40 @@
                     <tr>
                         <tr>
                             <td colspan="2">
-                                <img src="{{ asset('image/', $mahasiswa->foto) }}" alt="">
+                                <img src="{{ asset('images/'. $mahasiswa->foto) }}" class="img-fluid"">
                             </td>
                         </tr>
                     </tr>
                     <tr>
                         <th>Nama</th>
-                        <td>{{ %mahasiswa->nama }}</td>
+                        <td>{{ $mahasiswa->nama }}</td>
                     </tr>
                     <tr>
                         <th>NPM</th>
-                        <td>{{ %mahasiswa->npm }}</td>
+                        <td>{{ $mahasiswa->npm }}</td>
                     </tr>
                     <tr>
                         <th>Tempat, Tanggal Lahir</th>
-                        <td>{{ $mahasiswa->tempat_lahir }}, {{ $mahasiswa->tanggal_lahir }} </td>
+                        <td>{{ $mahasiswa->tempat_lahir }}, {{ $mahasiswa->tanggal_lahir }}</td>
                     </tr>
                     <tr>
-                        <th>Prodi</th>
-                        <td>{{ %mahasiswa->prodi }}</td>
+                        <th>Asal SMA</th>
+                        <td>{{ $mahasiswa->asal_sma }}</td>
+                    </tr>
+                    <tr>
+                        <th>Program Studi</th>
+                        <td>{{ $mahasiswa->prodi->nama }}</td>
                     </tr>
                     <tr>
                         <th>Fakultas</th>
-                        <td>{{ %mahasiswa->fakultas }}</td>
+                        <td>{{ $mahasiswa->prodi->fakultas->nama }}</td>
                     </tr>
                 </table>
-         </div>
-            <!-- /.card-body -->
-            <!-- <div class="card-footer">Footer</div> -->
-            <!-- /.card-footer-->
+            </div>
         </div>
         <!-- /.card -->
         </div>
     </div>
+    <!-- /.row -->
     <!--end::Row-->
 @endsection
