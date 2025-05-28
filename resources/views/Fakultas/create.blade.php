@@ -43,7 +43,7 @@
                         @enderror
                       </div>
                       <div class="mb-3">
-                        <label for="fakultas_id" class="form-label">Fakultas</label><select class=form-control" name="fakultas_id"> @foreach($fakultas as $item) <option value="{{ $item->id }} "> {{ $item->nama }} </option> @endforeach
+                        <label for="fakultas_id" class="form-label">Fakultas</label><select class="form-control" name="fakultas_id"> @foreach($fakultas as $item) <option value="{{ $item->id }}" {{ old('fakultas_id') == $item->id ? 'selected': ($prodi->fakultas_id == $item->id ? 'selected' : null) }}> {{ $item->nama }} </option> @endforeach
                       </select>
 
                       </div>

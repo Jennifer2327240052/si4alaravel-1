@@ -67,7 +67,20 @@ class ProdiController extends Controller
      */
     public function update(Request $request, Prodi $prodi)
     {
-        //
+        //validasi input
+        $input = $request->validate([
+            'nama' => 'required|unique:prodi',
+            'singkatan' => 'required|max:5',
+            'kaprodi' => 'required',
+            'sekretaris' => 'required',
+            'fakultas_id' => 'required',
+        ]);
+
+        //simpan data ke tabel prodi
+        $prodi->update($input);
+
+        //redict ke route prodi.index
+        return redirect ()->route('prodi.index')->with('success', 'program studi berhasil ditambahkan');
     }
 
     /**
