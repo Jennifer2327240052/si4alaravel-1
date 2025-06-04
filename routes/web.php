@@ -17,4 +17,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::resource('/fakultas', FakultasController::class);
+Route::resource('/prodi', ProdiController::class);
+Route::resource('/mahasiswa', MahasiswaController::class);
+Route::resource('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 require __DIR__.'/auth.php';

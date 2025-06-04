@@ -29,6 +29,11 @@ class FakultasController extends Controller
      */
     public function store(Request $request)
     {
+        //cek apakah memiliki izin untuk membuat fakultas
+        if ($request->user()->cannot('create', Fakultas::class)){
+            abort(403);
+        }
+        
         // validasi input
         $input = $request->validate([
             'nama' => 'required|unique:fakultas',
@@ -68,7 +73,12 @@ class FakultasController extends Controller
      */
     public function update(Request $request, Fakultas $fakultas)
     {
-        $fakultas = Fakultas::findOrFail($fakultas);
+         $fakultas = Fakultas::findOrFail($fakultas);
+        //cek apakah user memiliki sizin untuk mengupdate fakultas
+        if($request->userr()->cannot('update', $Fakultas)){
+            abort(403);
+        }
+
         //validasi input
         $input = $request->validate([
             'nama' => 'required|unique:fakultas',
@@ -85,10 +95,14 @@ class FakultasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($fakultas)
+    public function destroy(request $requst, $fakultas)
     {
         $fakultas = Fakultas::findOrFail($fakultas);
         //dd($fakultas);
+
+        if($request->userr()->cannot('delete', $Fakultas)){
+            abort(403);
+        }
 
         //hapus data fakultas
         $fakultas->delete();
